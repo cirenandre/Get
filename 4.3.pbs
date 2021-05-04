@@ -1,0 +1,13 @@
+#!/bin/bash                                                                                                                                                    
+#PBS -l nodes=1:ppn=1                                                                                                                                          
+#PBS -l walltime=00:02:00                                                                                                                                      
+#PBS -N veremii_l1_integral                                                                                                                                    
+#PBS -t 1-20                                                                                                                                                   
+#PBS -o ./output/                                                                                                                                              
+#PBS -e ./output/       
+
+cd $PBS_O_WORKDIR                                                                                                                                              
+str=$(head -n $PBS_ARRAYID solv.inp | tail -n 1)                                                                                                               
+var1=$(echo $str | cut -d' ' -f1)                                                                                                                              
+var2=$(echo $str | cut -d' ' -f2)                                                                                                                              
+./2.out $var1 $var2 | tail -1 > results/4.2.out.$PBS_ARRAYID                                                                                                   
