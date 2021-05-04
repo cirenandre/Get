@@ -1,0 +1,9 @@
+#!/bin/bash                                                                                                                                                    
+#PBS -l nodes=1:ppn=1                                                                                                                                          
+#PBS -l walltime=00:02:00                                                                                                                                      
+#PBS -N veremii_l1_integral                                                                                                                                    
+                                                                                                                                                               
+cd $PBS_O_WORKDIR                                                                                                                                              
+var1=$(cat data | cut -d' ' -f1)                                                                                                                               
+var2=$(cat data | cut -d' ' -f2)                                                                                                                               
+./2.out $var1 $var2 | tail -1 > 2.out.rezult
